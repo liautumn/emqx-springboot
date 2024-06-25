@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    allow-circular-references: true
+
+autumn:
+  emqx:
+    broker: tcp://192.168.31.103:1883
+    username: admin
+    password: aiqc115891
+    qos: 2
+    reconnect: true
+    reconnectTime: 5000
+    cleanSession: true
+    clientId: mqtt_test_client
+    subTopic: colordiff/mizuda/#
