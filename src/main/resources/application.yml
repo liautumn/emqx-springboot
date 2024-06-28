@@ -7,7 +7,7 @@ spring:
 
 autumn:
   emqx:
-    broker: tcp://192.168.31.103:1883
+    broker: tcp://192.168.31.103:2883
     username: admin
     password: aiqc115891
     qos: 2
@@ -15,4 +15,4 @@ autumn:
     reconnectTime: 5000
     cleanSession: true
     clientId: mqtt_test_client
-    subTopic: colordiff/mizuda/#
+    subTopic: aiqc/#
