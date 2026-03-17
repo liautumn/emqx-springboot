@@ -1,18 +1,34 @@
 server:
+  # Spring Boot 服务端口。
   port: 8080
 
-spring:
-  main:
-    allow-circular-references: true
 
-autumn:
-  emqx:
-    broker: tcp://192.168.31.103:2883
-    username: admin
-    password: aiqc115891
+emqx:
+  # MQTT Broker 地址。
+  broker: tcp://127.0.0.1:1883
+  # MQTT 用户名，没开启认证时可留空。
+  username:
+  # MQTT 密码，没开启认证时可留空。
+  password:
+  # MQTT 5 是否启用 clean start。
+  cleanStart: true
+  # 项目启动时是否立即建立 MQTT 连接。
+  autoStartup: true
+  # 是否自动重连。
+  automaticReconnect: true
+  # 连接超时时间，单位秒。
+  connectionTimeout: 10
+  # 心跳保活时间，单位秒。
+  keepAliveInterval: 20
+  # 共享连接使用的客户端 ID。
+  clientId: demo-client
+  publisher:
+    # 发布端默认主题。
+    topic: topic/test
+    # 发布端默认 QoS。
     qos: 2
-    reconnect: true
-    reconnectTime: 5000
-    cleanSession: true
-    clientId: mqtt_test_client
-    subTopic: aiqc/#
+  subscriber:
+    # 订阅端默认主题。
+    topic: topic/test
+    # 订阅端默认 QoS。
+    qos: 2

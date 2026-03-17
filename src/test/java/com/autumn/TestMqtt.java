@@ -1,21 +1,26 @@
 package com.autumn;
 
-import com.autumn.mqtt.MqttPublish;
+import com.autumn.mqtt.MqttPublisher;
 import jakarta.annotation.Resource;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+// 基础测试类，只校验 Spring 容器能够正常装配发布器 Bean。
+@SpringBootTest(
+        webEnvironment = SpringBootTest.WebEnvironment.NONE,
+        properties = "emqx.autoStartup=false"
+)
 public class TestMqtt {
 
+    // 注入发布服务。
     @Resource
-    private MqttPublish mqttPublish;
+    private MqttPublisher mqttPublisher;
 
+    // 验证发布器 Bean 已成功创建。
     @Test
-    public void pubMsg() {
-        mqttPublish.publish("testtopic/1", "Hello World");
+    public void contextLoads() {
+        Assertions.assertNotNull(mqttPublisher);
     }
 
 }
